@@ -79,7 +79,6 @@ contains
         character(kind=c_char), allocatable, target :: hash_buf(:)
         integer :: hash_length, i
 
-        ! 选择算法并确定哈希长度
         select case (lower(trim(algorithm)))
         case ('md5')
             md = EVP_md5()
