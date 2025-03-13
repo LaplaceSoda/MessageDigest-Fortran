@@ -17,5 +17,6 @@ program main
     character(100) :: string = "test"
     print *, digest("md5", trim(string))
     print *, digest("sha256", trim(string))
+    print *, digest("SM3", trim(string))
 end program main
 ```

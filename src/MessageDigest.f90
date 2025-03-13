@@ -34,6 +34,51 @@ module MessageDigest
             import :: c_ptr
             type(c_ptr) :: EVP_sha512
         end function EVP_sha512
+        ! SHA-512/224
+        function EVP_sha512_224() bind(C, name="EVP_sha512_224")
+            import :: c_ptr
+            type(c_ptr) :: EVP_sha512_224
+        end function
+        ! SHA-512/256
+        function EVP_sha512_256() bind(C, name="EVP_sha512_256")
+            import :: c_ptr
+            type(c_ptr) :: EVP_sha512_256
+        end function
+        ! SHA3-224
+        function EVP_sha3_224() bind(C, name="EVP_sha3_224")
+            import :: c_ptr
+            type(c_ptr) :: EVP_sha3_224
+        end function
+        ! SHA3-256
+        function EVP_sha3_256() bind(C, name="EVP_sha3_256")
+            import :: c_ptr
+            type(c_ptr) :: EVP_sha3_256
+        end function
+        ! SHA3-384
+        function EVP_sha3_384() bind(C, name="EVP_sha3_384")
+            import :: c_ptr
+            type(c_ptr) :: EVP_sha3_384
+        end function
+        ! SHA3-512
+        function EVP_sha3_512() bind(C, name="EVP_sha3_512")
+            import :: c_ptr
+            type(c_ptr) :: EVP_sha3_512
+        end function
+        ! BLAKE2b
+        function EVP_blake2b512() bind(C, name="EVP_blake2b512")
+            import :: c_ptr
+            type(c_ptr) :: EVP_blake2b512
+        end function
+        ! BLAKE2s
+        function EVP_blake2s256() bind(C, name="EVP_blake2s256")
+            import :: c_ptr
+            type(c_ptr) :: EVP_blake2s256
+        end function
+        ! SM3
+        function EVP_sm3() bind(C, name="EVP_sm3")
+            import :: c_ptr
+            type(c_ptr) :: EVP_sm3
+        end function
 
         function EVP_MD_CTX_new() bind(c, name="EVP_MD_CTX_new")
             import :: c_ptr
@@ -98,6 +143,33 @@ contains
         case ('sha512')
             md = EVP_sha512()
             hash_length = 64
+        case ('sha512-224')
+            md = EVP_sha512_224()
+            hash_length = 28
+        case ('sha512-256')
+            md = EVP_sha512_256()
+            hash_length = 32
+        case ('sha3-224')
+            md = EVP_sha3_224()
+            hash_length = 28
+        case ('sha3-256')
+            md = EVP_sha3_256()
+            hash_length = 32
+        case ('sha3-384')
+            md = EVP_sha3_384()
+            hash_length = 48
+        case ('sha3-512')
+            md = EVP_sha3_512()
+            hash_length = 64
+        case ('blake2b512', 'blake2b')
+            md = EVP_blake2b512()
+            hash_length = 64
+        case ('blake2s256', 'blake2s')
+            md = EVP_blake2s256()
+            hash_length = 32
+        case ('sm3')
+            md = EVP_sm3()
+            hash_length = 32
         case default
             error stop "Unsupported algorithm: "//algorithm
         end select
