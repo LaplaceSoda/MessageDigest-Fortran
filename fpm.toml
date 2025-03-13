@@ -1,0 +1,7 @@
+name = "MessageDigest-Fortran"
+version = "0.1.0"
+license = "Apache 2.0"
+author = "onthfixe"
+copyright = "Copyright 2025, onthfixe"
+[build]
+link = ["crypto", "ws2_32", "crypt32"]
